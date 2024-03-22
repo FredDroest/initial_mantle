@@ -15,12 +15,9 @@ def login_to_mantle(run_id: str, env=None, tenant=None):
     return client.load_pipeline(run_id)
 
 
-def pull_entities(run):
-    entities = run.pull_entities_input("fastqs")
+def pull_entities(run, stage_dir):
     # Get their data from S3 into the current directory.
-    for entity in entities:
-        entity.download_s3("read1", "./" + entity.get_name() + ".R1-Sequences.fastq.gz")
-        entity.download_s3("read2", "./" + entity.get_name() + ".R2-Sequences.fastq.gz")
+    run.pull_s3_input("reads", stage_dir + "reads.fastq.gz")
 
 
 def stage_input_entities(pipeline_id: str, stage_dir: str, env=None, tenant=None):
@@ -29,7 +26,7 @@ def stage_input_entities(pipeline_id: str, stage_dir: str, env=None, tenant=None
     You need to implement the logic here based on your specific requirements.
     """
     run = login_to_mantle(pipeline_id, env, tenant)
-    pull_entities(run)
+    pull_entities(run, stage_dir)
 
 
 def upload_outputs(pipeline_id, directory):
