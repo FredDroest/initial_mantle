@@ -41,6 +41,7 @@ process MANTLE_UPLOAD_RESULTS {
     input:
     val pipeline_run_id
     path outdir, stageAs: 'results/*'
+    val _last_module_completed
 
     output:
     tuple val(pipeline_run_id), path('*.txt'), emit: completion_timestamp
@@ -68,6 +69,7 @@ workflow {
     // Sync outputs back into mantle
     MANTLE_UPLOAD_RESULTS (
         params.pipeline_run_id,
-        params.outdir
+        params.outdir,
+        MANTLE_STAGE_INPUTS.out.test_ch
     )
 }
