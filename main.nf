@@ -19,6 +19,7 @@ process MANTLE_STAGE_INPUTS {
 
     """
     test.sh
+    echo "INVITRIS" > invitris.txt
     
     get_data.py ${pipeline_run_id} ${stage_directory}
     """
@@ -44,6 +45,7 @@ process MANTLE_UPLOAD_RESULTS {
     script:
 
     """
+    echo "OUTPUT-TEST"
     mantle_upload_results.py ${pipeline_run_id} ${outdir}
 
     date > results_uploaded_mantle.txt
