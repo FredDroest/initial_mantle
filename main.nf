@@ -5,7 +5,7 @@ process MANTLE_STAGE_INPUTS {
     secret 'MANTLE_USER'
     secret 'MANTLE_PASSWORD'
 
-    container 'mantle-cli-tool:latest'
+    container 'public.ecr.aws/c7j2m0e6/mantle-sdk:latest'
     
 
     input:
