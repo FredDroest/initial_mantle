@@ -60,10 +60,8 @@ def main():
     pipeline = login_to_mantle(args.run_id)
 
     # Call the download function
-    stage_input_entities(args.pipeline_id, args.stage_dir,
+    stage_input_entities(args.run_id, args.stage_dir,
                          args.mantle_env, args.tenant)
-
-    upload_outputs(args.pipeline_id, args.results_dir, args.mantle_env, args.tenant)
 
     # Add your code here
 

@@ -24,7 +24,9 @@ process MANTLE_STAGE_INPUTS {
 
     echo "INVITRIS" > ${stage_directory}"/invitris.txt"
 
-    get_data.py ${pipeline_run_id} ${stage_directory}
+    get_data.py ${pipeline_run_id} ${stage_directory} \
+                --tenant ${TENANT} \
+                --env ${ENV}
     """
 }
 
@@ -51,7 +53,9 @@ process MANTLE_UPLOAD_RESULTS {
     """
     echo "OUTPUT-TEST"
 
-    mantle_upload_results.py ${pipeline_run_id} ${outdir}
+    mantle_upload_results.py ${pipeline_run_id} ${outdir} \
+                --tenant ${TENANT} \
+                --env ${ENV}
 
     date > results_uploaded_mantle.txt
     """
