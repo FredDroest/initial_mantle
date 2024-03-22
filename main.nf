@@ -6,7 +6,6 @@ process MANTLE_STAGE_INPUTS {
     secret 'MANTLE_PASSWORD'
 
     container 'public.ecr.aws/c7j2m0e6/mantle-sdk:latest'
-    
 
     input:
     val pipeline_run_id
@@ -19,6 +18,7 @@ process MANTLE_STAGE_INPUTS {
 
     """
     test.sh
+
     echo "INVITRIS" > invitris.txt
     
     get_data.py ${pipeline_run_id} ${stage_directory}
@@ -46,6 +46,7 @@ process MANTLE_UPLOAD_RESULTS {
 
     """
     echo "OUTPUT-TEST"
+
     mantle_upload_results.py ${pipeline_run_id} ${outdir}
 
     date > results_uploaded_mantle.txt

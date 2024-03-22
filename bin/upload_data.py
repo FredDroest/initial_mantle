@@ -32,8 +32,6 @@ def main():
     parser = argparse.ArgumentParser(
         description="Download files for a given pipeline_id into a specified directory.")
     parser.add_argument("pipeline_id", type=str, help="The ID of the pipeline")
-    parser.add_argument("stage_dir", type=str, default=".",
-                        help="The directory where files should be downloaded")
     parser.add_argument("results_dir", type=str,
                         help="The directory of results")
     parser.add_argument(

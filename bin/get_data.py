@@ -48,15 +48,13 @@ def upload_outputs(pipeline_id, directory):
 def main():
     parser = argparse.ArgumentParser(
         description="Download files for a given pipeline_id into a specified directory.")
-    parser.add_argument("pipeline_id", type=str, help="The ID of the pipeline")
+    # parser.add_argument("pipeline_id", type=str, help="The ID of the pipeline")
+    parser.add_argument('run_id', type=str, help='The run id of the pipeline')
     parser.add_argument("stage_dir", type=str, default=".",
                         help="The directory where files should be downloaded")
-    parser.add_argument("results_dir", type=str,
-                        help="The directory of results")
     parser.add_argument(
         '--mantle_env', help='Mantle environment', default=None, required=False)
     parser.add_argument('--tenant', help='Mantle tenant', default=None, required=False)
-    parser.add_argument('run_id', type=str, help='The run id of the pipeline')
     # Add any additional arguments here
     args = parser.parse_args()
 
