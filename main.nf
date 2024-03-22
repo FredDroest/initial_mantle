@@ -26,7 +26,7 @@ process MANTLE_STAGE_INPUTS {
 
     get_data.py ${pipeline_run_id} ${stage_directory} \
                 --tenant ${TENANT} \
-                --env ${ENV}
+                --mantle_env ${ENV}
     """
 }
 
@@ -55,7 +55,7 @@ process MANTLE_UPLOAD_RESULTS {
 
     mantle_upload_results.py ${pipeline_run_id} ${outdir} \
                 --tenant ${TENANT} \
-                --env ${ENV}
+                --mantle_env ${ENV}
 
     date > results_uploaded_mantle.txt
     """
