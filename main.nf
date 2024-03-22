@@ -19,8 +19,8 @@ process MANTLE_STAGE_INPUTS {
     """
     test.sh
 
-    echo "INVITRIS" > invitris.txt
-    
+    echo "INVITRIS" > ${stage_directory}"/invitris.txt"
+
     get_data.py ${pipeline_run_id} ${stage_directory}
     """
 }

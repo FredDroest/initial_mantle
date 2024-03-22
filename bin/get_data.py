@@ -11,8 +11,7 @@ def login_to_mantle(run_id: str, env=None, tenant=None):
     """
     Authenticates with mantle and loads the pipeline.
     """
-    client = mantle.MantleClient(
-        env=env, tenant_id=tenant)
+    client = mantle.MantleClient()
     return client.load_pipeline(run_id)
 
 
