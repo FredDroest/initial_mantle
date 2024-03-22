@@ -7,7 +7,10 @@ process MANTLE_STAGE_INPUTS {
 
     container 'public.ecr.aws/c7j2m0e6/mantle-sdk:latest'
 
+    publishDir "${outdir}/stage_inputs”
+
     input:
+    val outdir
     val pipeline_run_id
 
     output:
@@ -56,6 +59,7 @@ process MANTLE_UPLOAD_RESULTS {
 workflow {
      // Get FatsQs and sample metadata using pipeline Run ID from mantle SDK
     MANTLE_STAGE_INPUTS (
+        params.outdir,
         params.pipeline_run_id
     )
 
