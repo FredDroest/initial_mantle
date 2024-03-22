@@ -7,7 +7,7 @@ process MANTLE_STAGE_INPUTS {
 
     container 'public.ecr.aws/c7j2m0e6/mantle-sdk:latest'
 
-    publishDir "${outdir}/stage_inputs”
+    publishDir "${outdir}/stage_inputs", mode: 'copy'
 
     input:
     val outdir
