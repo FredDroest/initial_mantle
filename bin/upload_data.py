@@ -11,8 +11,7 @@ def login_to_mantle(run_id: str, env=None, tenant=None):
     """
     Authenticates with mantle and loads the pipeline.
     """
-    client = mantle.MantleClient(
-        env=env, tenant_id=tenant)
+    client = mantle.MantleClient()
     return client.load_pipeline(run_id)
 
 
@@ -25,7 +24,9 @@ def upload_outputs(pipeline_id, directory):
         for filename in files:
             file_path = os.path.join(root, filename)
             if os.path.isfile(file_path):
-                run.add_file_output(filename, file_path)
+                print("FILENAME: ", filename)
+                print("FILEPATH: ", file_path)
+                run.add_s3_output(file_path, filename)
 
 
 def main():
