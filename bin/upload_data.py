@@ -40,7 +40,7 @@ def main():
 
     args = parser.parse_args()
 
-    upload_outputs(args.pipeline_id, args.results_dir, args.mantle_env, args.tenant)
+    upload_outputs(args.pipeline_id, args.results_dir)
 
     # Add your code here
 
