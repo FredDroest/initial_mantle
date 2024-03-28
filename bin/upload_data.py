@@ -26,7 +26,7 @@ def upload_outputs(pipeline_id, directory):
             if os.path.isfile(file_path):
                 print("FILENAME: ", filename)
                 print("FILEPATH: ", file_path)
-                run.add_s3_output(file_path, filename)
+                run.add_file_output(filename, file_path)
 
 
 def main():
