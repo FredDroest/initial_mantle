@@ -30,6 +30,10 @@ process MANTLE_STAGE_INPUTS {
     """
 }
 
+process ASSEMBLY {
+    tag "${pipeline_run_id}-mantleSDK_uploadResults"
+}
+
 process MANTLE_UPLOAD_RESULTS {
     tag "${pipeline_run_id}-mantleSDK_uploadResults"
 
@@ -53,7 +57,7 @@ process MANTLE_UPLOAD_RESULTS {
     """
     echo "OUTPUT-TEST"
 
-    mantle_upload_results.py ${pipeline_run_id} ${outdir} \
+    upload_data.py ${pipeline_run_id} ${outdir} \
                 --tenant ${TENANT} \
                 --mantle_env ${ENV}
 
@@ -67,8 +71,6 @@ workflow {
         params.outdir,
         params.pipeline_run_id
     )
-
-    // ... add your pipeline modules here...
 
     // Sync outputs back into mantle
     MANTLE_UPLOAD_RESULTS (
