@@ -30,9 +30,6 @@ process MANTLE_STAGE_INPUTS {
     """
 }
 
-process ASSEMBLY {
-    tag "${pipeline_run_id}-mantleSDK_uploadResults"
-}
 
 process MANTLE_UPLOAD_RESULTS {
     tag "${pipeline_run_id}-mantleSDK_uploadResults"
